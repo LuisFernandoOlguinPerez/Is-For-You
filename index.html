@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Is For You</title>
+        <link rel="icon" type="image/png" href="https://images.vexels.com/media/users/3/137355/isolated/preview/1357eed3757dcced0c00e2bd73bf4008-logotipo-de-coraz-oacute-n-rosa-a-rayas-by-vexels.png"/>
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+        <style>
+:root {
+    --carmine: #9a133e;
+    --ruby: #ffb3c6;
+    --trans: transparent;
+}
+.app{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle 500px, #ffb3c6, #ff3366);
+    z-index: 1;
+}
+.bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.bg::before,
+.bg::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.bg{
+    background-image: repeating-radial-gradient(
+            circle at 1.2em -0.2em,
+            var(--ruby),
+            var(--ruby) 0.5em,
+            var(--trans) 0.51em,
+            var(--trans) 3em
+        ),
+        repeating-radial-gradient(
+            circle at -0.2em -0.2em,
+            var(--ruby),
+            var(--ruby) 0.5em,
+            var(--trans) 0.51em,
+            var(--trans) 3em
+        );
+    background-size: 1em 1em;
+    background-position: 0 0;
+}
+.bg::before {
+    background-image: repeating-radial-gradient(
+            circle at 1.2em -0.2em,
+            var(--ruby),
+            var(--ruby) 0.5em,
+            var(--trans) 0.51em,
+            var(--trans) 3em
+        ),
+        repeating-radial-gradient(
+            circle at -0.2em -0.2em,
+            var(--ruby),
+            var(--ruby) 0.5em,
+            var(--trans) 0.51em,
+            var(--trans) 3em
+        );
+    background-size: 1em 1em;
+    background-position: 0.5em 0.5em;
+}
+.bg::after {
+    background-image: repeating-radial-gradient(
+            circle at 0.385em 0.64em,
+            var(--ruby),
+            var(--ruby) 0.14em,
+            var(--trans) 0.15em,
+            var(--trans) 2em
+        ),
+        repeating-radial-gradient(
+            circle at 0.615em 0.64em,
+            var(--ruby),
+            var(--ruby) 0.14em,
+            var(--trans) 0.15em,
+            var(--trans) 2em
+        ),
+        repeating-radial-gradient(
+            circle at 0.885em 0.14em,
+            var(--ruby),
+            var(--ruby) 0.14em,
+            var(--trans) 0.15em,
+            var(--trans) 2em
+        ),
+        repeating-radial-gradient(
+            circle at 0.115em 0.14em,
+            var(--ruby),
+            var(--ruby) 0.14em,
+            var(--trans) 0.15em,
+            var(--trans) 2em
+        );
+    background-size: 1em 1em;
+    background-position: 0.5em 0.32em;
+}
+.hearts{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+}
+.l{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130px;
+    height: 110px;
+    transition: 100ms;
+}
+.tglBtn{
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+    z-index: 2;
+}
+.tgl{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: #e7e8e9;
+    border-radius: 50%;
+    transition: 0.15s;
+}
+.infS{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.3);
+    width: 75px;
+    height: 40px;
+}
+.l2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.18);
+    width: 130px;
+    height: 110px;
+    display: none;
+}
+.txt{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #3f211c;
+    font-size: 32px;
+    text-align: center;
+    font-family: 'Bangers', cursive;
+    text-shadow: 2px 2px 0 #ed1f2a;
+    z-index: 2;
+}
+.info{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffffff;
+    z-index: 3;
+}
+p{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 15px;
+    color: #3f211c;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: center;
+}
+p:nth-child(1){
+    top: 90px;
+}
+p:nth-child(2){
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+p:nth-child(3){
+    bottom: 10px;
+}
+        </style>
+        <script>
+var x,y,x2,y2,x3 = 0,y3 = 0;
+var inf = true;
+var mov = false;
+var intvl;
+var arr = ["#ff3366", "#ff4d79", "#ff668c", "#ff809f", "#ff99b3", "#ffb3c6", "#ffccd9", "#ff4d79", "#ff668c", "#ff809f", "#ff99b3", "#ffb3c6", "#ffccd9"];
+var pos = ["0) scale(1.75)", "5px) scale(1.5)", "10px) scale(1.25)", "15px) scale(1)", "20px) scale(0.75)", "25px) scale(0.5)", "30px) scale(0.25)", "-5px) scale(1.5)", "-10px) scale(1.25)", "-15px) scale(1)", "-20px) scale(0.75)", "-25px) scale(0.5)", "-30px) scale(0.25)"];
+
+var pos2 = ["0) scale(1.75)", "10px) scale(1.5)", "20px) scale(1.25)", "30px) scale(1)", "40px) scale(0.75)", "50px) scale(0.5)", "60px) scale(0.25)", "-10px) scale(1.5)", "-20px) scale(1.25)", "-30px) scale(1)", "-40px) scale(0.75)", "-50px) scale(0.5)", "-60px) scale(0.25)"];
+
+window.onload = function(){
+    app = document.querySelector(".app");
+    h = document.querySelector(".hearts");
+    l = document.querySelectorAll(".l");
+    path = document.querySelectorAll(".p1");
+    tgl = document.querySelector(".tgl");
+    txt = document.querySelector(".txt");
+    info = document.querySelector(".info");
+    
+    info.style.background = "#ffffffb5";
+
+    for(var i = 0; i < path.length; i++){
+        path[i].style.fill = arr[i];
+    }
+    for(var i = 0; i < l.length; i++){
+        l[i].style.transform = "translate3d(-50%, -50%, " + pos[i];
+    }
+    shadow("");
+    txt.innerHTML = "Felíz San Valentín!!!\n\n<span style='font-size:18px;'>Lograras todo lo que deseas...</span>";
+    
+    intvl = setInterval(beat, 1300);
+    
+    app.addEventListener("touchstart", start, false);
+    app.addEventListener("mousedown", start, false);
+    app.addEventListener("touchmove", move, false);
+    app.addEventListener("mousemove", move, false);
+    app.addEventListener("touchend", end, false);
+    app.addEventListener("mouseup", end, false);
+}
+
+function tglBtnF(){
+    if(inf){
+        inf = false;
+        tgl.style.left = "40px";
+        document.querySelector('.infS').style.display = "none";
+        document.querySelector('.l2').style.display = "block";
+        h.style.transform = "translate(-50%,-50%) rotateX(0deg) rotateY(0deg)";
+        x3 = 0;
+        y3 = 0;
+        clearInterval(intvl);
+    }
+    else{
+        inf = true;
+        tgl.style.left ="5px";
+        document.querySelector('.infS').style.display = "block";
+        document.querySelector('.l2').style.display = "none";
+        intvl = setInterval(beat, 1500);
+    }
+}
+
+function start(e) {
+    if (e.type === "touchstart") {
+        x = Math.floor(e.touches[0].clientX - x3);
+        y = Math.floor(e.touches[0].clientY - y3);
+    }
+    else {
+        x = Math.floor(e.clientX - x3);
+        y = Math.floor(e.clientY - y3);
+    }
+    if(inf){
+        animPs = false;
+        cancelAnimationFrame(anim);
+    }
+    mov = true;
+}
+function move(e){
+    if(mov){
+        e.preventDefault();
+        if (e.type === "touchmove") {
+            x2 = Math.floor(e.touches[0].clientX - x);
+            y2 = Math.floor(e.touches[0].clientY - y);
+        }
+        else {
+            x2 = Math.floor(e.clientX - x);
+            y2 = Math.floor(e.clientY - y);
+        }
+        x3 = x2;
+        y3 = y2;
+        var ps = "translate(-50%,-50%) rotateX(" + -y2/2 + "deg) rotateY(" + x2/2 + "deg)";
+        h.style.transform = ps;
+    }
+}
+var animPs = false;
+var velo = 1;
+var fric = 0.8;
+function end(){
+    if(inf){x = x2;y = y2;}
+    else{animPs = true;anim();}
+    mov = false;
+}
+
+
+//This simulation sucks
+function anim(){
+    if(animPs){
+        requestAnimationFrame(anim);
+        x3 = -x3 * fric;
+        y3 = -y3 * fric;
+        if(x3 > 0){x3 -= velo;}
+        if(x3 < 0){x3 += velo;}
+        if(y3 > 0){y3 -= velo;}
+        if(y3 < 0){y3 += velo;}
+        h.style.transform = "translate(-50%,-50%) rotateX(" + y3 + "deg) rotateY(" + -x3 + "deg)";
+    }
+}
+function beat(){
+    for(var i = 0; i < l.length; i++){
+        l[i].style.transform = "translate3d(-50%, -50%, " + pos2[i];
+    }
+    setTimeout(function(){
+        for(var i = 0; i < l.length; i++){
+            l[i].style.transform = "translate3d(-50%, -50%, " + pos[i];
+        }
+    },100);
+    setTimeout(function(){
+        for(var i = 0; i < l.length; i++){
+            l[i].style.transform = "translate3d(-50%, -50%, " + pos2[i];
+        }
+    },200);
+    setTimeout(function(){
+        for(var i = 0; i < l.length; i++){
+            l[i].style.transform = "translate3d(-50%, -50%, " + pos[i];
+        }
+    },300);
+}
+
+var _0x4d49=['11821AwHKPv','359116wvJaOX','<br>','1FDpHbg','780371oKvpRh','793421wRbNAO','1ZjDVft','763449vFkXyY','1045753Cpfjtk','join','split','587017wEryyQ','slice','14iuDawr','push','1WKvBKp','length','2BSLfWc'];var _0x280b=function(_0x50bca1,_0x456a53){_0x50bca1=_0x50bca1-0x129;var _0x4d49a3=_0x4d49[_0x50bca1];return _0x4d49a3;};(function(_0x4a244d,_0x2756f3){var _0x2a1cd4=_0x280b;while(!![]){try{var _0x2649e0=parseInt(_0x2a1cd4(0x13a))*parseInt(_0x2a1cd4(0x138))+parseInt(_0x2a1cd4(0x12e))+parseInt(_0x2a1cd4(0x12a))*-parseInt(_0x2a1cd4(0x12c))+parseInt(_0x2a1cd4(0x12d))*-parseInt(_0x2a1cd4(0x132))+parseInt(_0x2a1cd4(0x139))*parseInt(_0x2a1cd4(0x134))+parseInt(_0x2a1cd4(0x12f))+-parseInt(_0x2a1cd4(0x136))*parseInt(_0x2a1cd4(0x12b));if(_0x2649e0===_0x2756f3)break;else _0x4a244d['push'](_0x4a244d['shift']());}catch(_0x49d0dc){_0x4a244d['push'](_0x4a244d['shift']());}}}(_0x4d49,0x81e97));function shadow(_0x3d9538){var _0x37ef3c=_0x280b,_0x3f5f8e=_0x3d9538[_0x37ef3c(0x131)]('\x20'),_0x1ef339=[];for(var _0x36188b=0x0;_0x36188b<_0x3f5f8e[_0x37ef3c(0x137)];_0x36188b++){var _0x4af22d=[];for(var _0xdc5fcc=0x0;_0xdc5fcc<_0x3f5f8e[_0x36188b][_0x37ef3c(0x137)];_0xdc5fcc++){var _0x29b630='<a\x20class=\x27cA\x27>'+_0x3f5f8e[_0x36188b][_0x37ef3c(0x133)](_0xdc5fcc,_0xdc5fcc+0x1)+'</a>';_0x4af22d[_0x37ef3c(0x135)](_0x29b630);}_0x1ef339[_0x37ef3c(0x135)](_0x4af22d[_0x37ef3c(0x130)](''));}return _0x1ef339['join'](_0x37ef3c(0x129));}
+
+function infoF(){
+    info.remove();
+}
+        </script>
+    </head>
+    <body>
+        <div class="app">
+            <div class="bg"></div>
+            <div class="tglBtn" onclick="tglBtnF()">
+                <div class="tgl">
+                    <svg class="infS">
+                        <path d="M 51.3565 13.4017 c 2.6021 -1.6111 5.7508 -1.6837 8.4238 -0.195 c 2.5999 1.448 4.1523 4.0688 4.1523 7.0115 c 0 2.9421 -1.5524 5.5635 -4.1523 7.0115 c -2.673 1.4892 -5.8222 1.4156 -8.4238 -0.195 c -3.9078 -2.4203 -7.3295 -5.7041 -9.8937 -9.496 c -3.3146 -4.9016 -7.7333 -9.1445 -12.7793 -12.2695 c -0.0011 -0.0005 -0.0016 -0.0011 -0.0027 -0.0016 c -2.8235 -1.7485 -6.0397 -2.6812 -9.3016 -2.6966 c -3.0663 -0.0192 -6.1128 0.7723 -8.8143 2.2769 c -5.6761 3.1613 -9.0648 8.9072 -9.0648 15.3704 c 0 6.4633 3.3887 12.2091 9.0643 15.3704 c 2.6768 1.4908 5.6937 2.2775 8.7292 2.2775 c 0.0286 0 0.0571 0 0.0857 -0.0005 c 3.2613 -0.0159 6.4781 -0.9481 9.3016 -2.6966 l 0.0055 -0.0038 c 3.2393 -2.0067 6.2177 -4.4753 8.8138 -7.2817 c -1.4469 -1.5639 -2.7768 -3.2316 -3.9628 -4.9856 c -0.6262 -0.9256 -1.3035 -1.8199 -2.0259 -2.6796 c -2.2379 2.6631 -4.9136 4.9867 -7.8679 6.8165 c -0.0005 0 -0.0005 0 -0.0005 0 h 0.0005 c -2.6016 1.6111 -5.7508 1.6837 -8.4238 0.195 c -2.5999 -1.448 -4.1523 -4.0693 -4.1523 -7.0115 c 0 -2.9427 1.5524 -5.5635 4.1523 -7.012 c 2.673 -1.4886 5.8222 -1.4156 8.4238 0.1956 c 0 0 0.0005 0 0.0005 0.0005 c 3.9078 2.4197 7.329 5.7036 9.8932 9.4955 c 3.3129 4.8994 7.7305 9.1406 12.7744 12.2657 c 0.0027 0.0016 0.0049 0.0038 0.0077 0.0055 c 2.824 1.7485 6.0403 2.6812 9.3016 2.6966 c 0.0286 0.0005 0.0571 0.0005 0.0857 0.0005 c 3.0355 0 6.0524 -0.7872 8.7292 -2.2775 c 5.6755 -3.1613 9.0643 -8.9072 9.0643 -15.3704 c 0 -6.4633 -3.3887 -12.2091 -9.0643 -15.3704 c -2.7021 -1.5046 -5.7437 -2.2906 -8.8149 -2.2775 c -3.2613 0.0159 -6.4781 0.9487 -9.3016 2.6971 c 0.0022 -0.0011 0.0038 -0.0022 0.006 -0.0033 c -0.0022 0.0011 -0.0038 0.0022 -0.006 0.0033 c -3.241 2.0078 -6.2216 4.4775 -8.8193 7.2856 c 1.4469 1.5639 2.7768 3.2316 3.9628 4.9856 c 0.6257 0.9256 1.3035 1.8204 2.0259 2.6801 c 2.2379 -2.6636 4.9136 -4.9872 7.8679 -6.817 z" fill="#ff98c9"/>
+                    </svg>
+                    <svg class="l2">
+                        <path d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105" fill="#ff98c9"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="hearts">
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+                <svg class="l">
+                    <path class="p1" d="M 65 105 C 180 45 96 -25 65 22 C 35 -25 -50 45 65 105"/>
+                </svg>
+            </div>
+            <div class="txt"></div>
+        </div>
+        <div class="info" onclick="infoF()">
+            <p>Presiona el botón de alternar para cambiar lo que sucede después de que se completa el arrastre.</p>
+               <p>Arrastra a cualquier lugar de la pantalla para rotar el corazón.</p>
+               <p>Presiona en cualquier lugar de la pantalla para comenzar.</p>
+        </div>
+    </body>
+</html>
